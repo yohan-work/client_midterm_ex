@@ -1,0 +1,88 @@
+import { useState, ______ } from "react";
+
+const Foods = () => {
+  const next_id = useRef(______);
+  const [foods, ______] = useState([
+    { id: 1, name: "chicken" },
+    { id: 2, name: "pizza" },
+    { id: 3, name: "hamburger" },
+  ]);
+
+  const [name, ______] = useState("");
+
+  const onClickRemove = (______) => {
+    if (window.confirm(`${id} : delete?`)) {
+      const data = foods.______(food => food.id !== id);
+      ______(data);
+    }
+  };
+
+  const onKeyDownName = (e) => {
+    if (e.______ === "Enter") {
+      if (name === "") {
+        ______("Enter a Food Name");
+      } else {
+        const data = foods.______(
+          { id: next_id.current, name: name }
+        );
+        setFoods(data);
+        next_id.______++;
+        setName("");
+      }
+    }
+  };
+  
+  return (
+    <div className="componentWrap">
+      <h1>Foods Component</h1>
+      <div style={{ marginBottom: "10px" }}>
+        <input
+          type="text"
+          placeholder="Enter a food"
+          value={______}
+          onChange={(e) => ______(e.target.value)}
+          ______={onKeyDownName}
+        />
+        <button>Add</button>
+      </div>
+      {foods.______(food => {
+        return (
+          <div key={______}>
+            <span style={{ marginLeft: "10px" }}>{food.id} :</span>
+            <span style={{ marginLeft: "10px" }}>{food.name}</span>
+            <button
+              onClick={() => ______(food.id)}
+              style={{ marginLeft: "10px" }}
+            >
+              Delete
+            </button>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default Foods;
+
+
+
+/*
+	useRef
+	4
+	setFoods
+	setName
+	id
+	filter
+	setFoods **
+	key ****
+	alert
+	concat
+	current **
+	name
+	setName**
+	onKeyDown
+	map
+	food.id
+	onClickRemove
+*/

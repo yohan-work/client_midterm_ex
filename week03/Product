@@ -1,0 +1,98 @@
+import { useState, ___useRef___ } from "react";
+
+const Product = () => {
+  const [form, __setForm____] = useState({
+    name: "",
+    price: 0,
+    facture: "APPLE",
+  });
+
+  const { ___name___, price, facture } = form;
+  const onChange = (___e___) => {
+    setForm({ ...form, [e.target.__name____]: e.target.value });
+  };
+
+  const onClickRegister = () => {
+    if (window.___confirm___(("Register Product?"))) {
+      alert(
+        `Product Name: ${name} \n Product Price: ${price} \n Product Facture: ${facture}`
+      );
+      setForm({
+        name: "",
+        price: ___0___,
+        facture: "APPLE",
+      });
+      ref_name.__current____.focus();
+    } else {
+      alert("Register Failed");
+    }
+  };
+
+  const onKeyDown = (e) => {
+    if (e.___key___ === "Enter") {
+      ___onClickRegister___();
+    }
+  };
+
+  const ref_name = useRef(__null____);
+  return (
+    <div className="componentWrap">
+      <h1>Product Component</h1>
+      <input
+        ref={__ref_name____}
+        onChange={__onChange____}
+        name="name"
+        type="text"
+        style={{ marginRight: "10px" }}
+        placeholder="Product Name"
+        value={__name____}
+      />
+      <input
+        onChange={onChange}
+        name="price"
+        type="text"
+        style={{ marginRight: "10px" }}
+        placeholder="Product Price"
+        value={___price___}
+      />
+      <input
+        onChange={onChange}
+        name="facture"
+        type="text"
+        style={{ marginRight: "10px" }}
+        placeholder="Product facture"
+        value={facture}
+        ___onKeyDown___={onKeyDown}
+      />
+      <button onClick={__onClickRegister____}>Add Product</button>
+      <div>
+        <p>Product Name: {name}</p>
+        <p>Product Price: {__price____}</p>
+        <p>Product Facture: {facture}</p>
+      </div>
+    </div>
+  );
+};
+
+export default Product;
+
+/*
+	1. useRef
+	2. setForm
+	3. name
+	4. e
+	5. name **
+	6. confirm
+	7. 0 **
+	8. current
+	9. key **
+	10. onClickRegister
+	11. null **
+	12. ref_name
+	13. onChange
+	14. name
+	15. price
+	16. onKeyDown
+	17. onClickRegister
+	18. price
+*/

@@ -1,0 +1,40 @@
+import { ______ } from "react-router-dom";
+import { Routes, ______ } from "react-router-dom";
+import Todos from "./Todos";
+import Posts from "./______";
+import PostView from "./PostView";
+
+const MenuRouter = () => {
+  return (
+    <div>
+      <div className="mt-2">
+        <Link to="______" className="mx-3">
+          Post List
+        </Link>
+        <Link to="/todos" className="mx-3">
+          Todo List
+        </Link>
+        <hr />
+      </div>
+      <______>
+        <Route path="/posts" element={<______>} />
+        <Route path="/todos" element={<Todos />} />
+        <Route path="______" element={<PostView />} />
+      </______>
+    </div>
+  );
+};
+
+export ______ MenuRouter;
+
+/*
+	1. Link
+	2. Route
+	3. Posts
+	4. /posts
+	5. Routes
+	6. Posts
+	7. /posts/:id
+	8. Routes
+	9. default
+*/

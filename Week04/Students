@@ -1,0 +1,65 @@
+import { ______ } from "react";
+import Table from "react-bootstrap/Table";
+import Student from "./______";
+import Register from "./Register";
+const Students = () => {
+  const [students, ______] = useState([
+    { id: 1, name: "John", address: "Incheon", phone: "010-1234-5678" },
+    { id: 2, name: "Kim", address: "Seoul", phone: "010-5555-5678" },
+    { id: 3, name: "Choi", address: "Suwon", phone: "010-3333-5678" },
+  ]);
+
+  const onDelete = (______) => {
+    if (window.______((`${id} : delete?`))) {
+      const data = students.______(s => s.id !== id);
+      ______(data);
+    }
+  };
+
+  const onRegister = (______) => {
+    const data = students.______(student);
+    setStudents(data);
+  };
+
+  return (
+    <div className="componentWrap">
+      <h1 className="text-center">Students Component</h1>
+      <Register ______={onRegister} />
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.______(stu => (
+            <Student stu={______} ______={onDelete} />
+          ))}
+        </tbody>
+      </Table>
+    </div>
+  );
+};
+
+export ______ Students;
+
+
+/*
+	1. useState **
+	2. Student
+	3. setStudents
+	4. id**
+	5. confirm
+	6. filter
+	7. setStudents
+	8. student **
+	9. concat **
+	10. onRegister **
+	11. map
+	12. stu
+	13. onDelete **
+	14. default
+*/

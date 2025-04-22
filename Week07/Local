@@ -1,0 +1,75 @@
+import { ______ } from "react";
+import Button from "react-bootstrap/Button";
+import ______ from "react-bootstrap/Modal";
+import { Map, ______ } from "react-kakao-maps-sdk";
+const Local = ({ ______ }) => {
+  const [show, ______] = useState(false);
+  const handleClose = () => ______(false);
+  const handleShow = () => setShow(______);
+
+  const [toggle, ______] = useState(false);
+
+  return (
+    <>
+      <Button variant="primary" onClick={______}>
+        Location
+      </Button>
+
+      <Modal
+        size="lg"
+        show={______}
+        onHide={______}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>{local.______}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Map
+            center={{ lat: local.______, lng: local.x }}
+            style={{ width: "100%", height: "360px" }}
+          >
+            <MapMarker
+              onMouseOver={() => ______(true)}
+              onMouseOut={() => setToggle(______)}
+              position={{ lat: local.y, lng: local.______ }}
+            >
+              {toggle && <div>{local.______}</div>}
+            </MapMarker>
+          </Map>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={______}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
+
+export ______ Local;
+
+
+/*
+	1. useState
+	2. Modal
+	3. MapMarker**
+	4. local
+	5. setShow
+	6. setShow
+	7. true
+	8. setToggle
+	9. handleShow
+	10. show
+	11. handleClose
+	12. place_name
+	13. y
+	14. setToggle
+	15. false
+	16. x
+	17. address_name
+	18. handleClose
+	19. default
+*/

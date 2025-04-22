@@ -1,0 +1,38 @@
+import { useState, useRef } from "react";
+import { ______ } from "react-bootstrap";
+
+const Student = ({ ______, onDelete }) => {
+  // s가 undefined일 경우를 대비한 방어 코드
+  if (!______) {
+    return ______; // 또는 <tr><td colSpan="4">학생 정보가 없습니다.</td></tr>
+  }
+  const { ______, name, address, phone } = stu;
+  return (
+    <tr>
+      <td>{______}</td>
+      <td>{name}</td>
+      <td>{______}</td>
+      <td>{phone}</td>
+      <td>
+        <Button size="sm" variant="outline-danger" onClick={() => ______(id)}>
+          Delete
+        </Button>
+      </td>
+    </tr>
+  );
+};
+
+export ______ Student;
+
+
+/*
+	1. Button
+	2. stu
+	3. stu**
+	4. null
+	5. id
+	6. id
+	7. address
+	8. onDelete
+	9. default
+*/

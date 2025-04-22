@@ -1,0 +1,78 @@
+import { ______ } from "react";
+import Button from "react-bootstrap/Button";
+import ______ from "react-bootstrap/Modal";
+import { Table, Row, Col } from "react-bootstrap";
+
+const Book = ({ ______ }) => {
+  const [show, ______] = useState(false);
+
+  const handleClose = () => ______(false);
+  const handleShow = () => setShow(______);
+
+  return (
+    <>
+      <Button variant="primary" onClick={______}>
+        Info
+      </Button>
+
+      <Modal
+        size="lg"
+        show={______}
+        onHide={______}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.______>
+          <Modal.Title>Book Info</Modal.Title>
+        </Modal.Header>
+        <Modal.______>
+          <Row>
+            <Col lg={3} className="text-center">
+              <img
+                src={book.thumbnail || "______"}
+                width="100"
+              />
+            </Col>
+            <Col className="mt-3">
+              <h5>{book.______}</h5>
+              <div>Author : {book.authors}</div>
+              <div>Price : {book.______}</div>
+              <div>Publisher : {book.publisher}</div>
+              <div>Isbn : {book.isbn}</div>
+            </Col>
+          </Row>
+          <hr />
+          <div>{book.contents || "______"}</div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={______}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
+
+export ______ Book;
+
+
+/*
+	1. useState**
+	2. Modal
+	3. book
+	4. setShow**
+	5. setShow
+	6. true
+	7. handleShow
+	8. show**
+	9. handleClose
+	10. Header
+	11. Body
+	12. https://placehold.co/100x150
+	13. title
+	14. sale_price
+	15. No contents
+	16. handleClose
+	17. default
+*/

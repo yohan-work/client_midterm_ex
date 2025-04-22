@@ -1,0 +1,23 @@
+import ______ from "react";
+
+const Todo = ({ ______ }) => {
+  return (
+    <tr>
+      <td>
+        <input type="checkbox" checked={todo.______} />
+      </td>
+      <td>{todo.______}</td>
+      <td>{todo.______}</td>
+    </tr>
+  );
+};
+
+export ______ Todo;
+/*
+	1. React
+	2. todo
+	3. completed**
+	4. id
+	5. title
+	6. default
+*/

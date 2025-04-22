@@ -1,0 +1,83 @@
+import { __useState____, useRef } from "react";
+
+const Join = () => {
+  const [name, setName] = useState("NAME");
+  const [phone, ___setPhone___] = useState("PHONE");
+  const [address, setAddress] = useState("ADDRESS");
+  const __ref_name____ = useRef(null);
+
+  const onClickRegister = () => {
+    if (window.__confirm____("Register NOW?")) {
+      alert(`Name : ${name} \n Tel : ${phone} \n Address : ${address}`);
+      setName("");
+      __setPhone____("");
+      setAddress("");
+      ref_name.__current____.focus();
+    } else {
+      alert("Register Failed");
+    }
+  };
+
+  const onKeyDown = (___e___) => {
+    if (e.key === "__Enter____") {
+      onClickRegister();
+    }
+  };
+
+  return (
+    <div className="componentWrap">
+      <h1>Join Component</h1>
+      <input
+        ref={ref_name}
+        ___onChange___={(e) => {
+          setName(e.target.value);
+        }}
+        type="text"
+        placeholder="name"
+        value={name}
+        style={{ marginRight: "10px" }}
+      />
+      <input
+        onChange={(e) => {
+          setPhone(e.__target.value____);
+        }}
+        type="text"
+        placeholder="tel"
+        value={phone}
+        style={{ marginRight: "10px" }}
+      />
+      <input
+        onChange={(e) => {
+          setAddress(e.target.value);
+        }}
+        _onKeyDown_____={onKeyDown}
+        type="text"
+        value={address}
+        placeholder="address"
+      />
+      <button onClick={__onClickRegister____}>Join</button>
+      <div>
+        <p>Name : {___name___}</p>
+        <p>Tel : {phone}</p>
+        <p>Address : {address}</p>
+      </div>
+    </div>
+  );
+};
+export default Join;
+
+/*
+	useState
+	setPhone
+	ref_name
+	confirm
+	setPhone
+	current
+	e
+	Enter
+	onChange
+	target.value
+	onKeyDown
+	onClickRegister
+	name
+*/

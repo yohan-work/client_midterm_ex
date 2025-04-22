@@ -1,0 +1,167 @@
+import React, { ___useEffect___, useState } from "react";
+import ___axios___ from "axios";
+import { Table, Row, Col, Form, Button, ___InputGroup___ } from "react-bootstrap";
+import Local from "./___Local___";
+
+const Locals = () => {
+  //DOCU
+  const [documents, __setDocuments____] = useState([]);
+
+  //QUERY
+  const [query, __setQuery____] = useState("apple");
+
+  // PAGE
+  const [page, setPage] = useState(___1___);
+
+  // LAST PAGE
+  const [last, setLast] = useState(1);
+
+  // SIZE
+  const [size, __setSize____] = useState(10);
+
+  //API CALL
+  const callAPI = ___async___ () => {
+    const url = "__http://____";
+    const config = {
+      headers: {
+        Authorization: "KakaoAK 927c8f2f8b2101623eaa4b44f626c707",
+      },
+      params: {
+        query: __query____,
+        size: size,
+        page: page,
+      },
+    };
+    const res = await axios.___get___(url, config);
+    console.log(res);
+    setDocuments(res.data.___documents___);
+    setLast(Math.ceil(res.data.meta.___pageable_count___ / size));
+  };
+
+  useEffect(() => {
+    ___callAPI___();
+  }, [page, size]);
+
+  const onSubmit = (___e___) => {
+    e.__preventDefault____();
+    if (query === "") {
+      alert("검색어를 입력해주세요");
+    } else {
+      ___setPage___(1);
+      callAPI();
+    }
+  };
+
+  const onChangeSize = (e) => {
+    setPage(1);
+    setSize(___parseInt___(e.target.value));
+  };
+
+  return (
+    <div className="componentWrap">
+      <h1>Locals Component</h1>
+      <Row>
+        <Form ___onSubmit___={onSubmit}>
+          <Row className="align-items-center mx-1">
+            <Col md={2}>
+              <Form.Select
+                value={___size___}
+                onChange={___onChangeSize___}
+                className="my-3"
+              >
+                <option value={5}>5 rows</option>
+                <option value={10}>10 rows</option>
+                <option value={15}>15 rows</option>
+              </Form.Select>
+            </Col>
+            <Col md={10}>
+              <InputGroup className="my-3">
+                <Form.Control
+                  onChange={(e) => __setQuery____(e.target.value)}
+                  type="text"
+                  placeholder="Search"
+                  value={___query___}
+                />
+                <Button type="submit" variant="primary">
+                  Search
+                </Button>
+              </InputGroup>
+            </Col>
+          </Row>
+        </Form>
+      </Row>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Place Name</th>
+            <th>Address</th>
+            <th>TEL</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          {documents.___map___(doc => (
+            <tr key={___doc.id___}>
+              <td>{doc.___title___}</td>
+              <td>{doc.address_name}</td>
+              <td>{doc.phone}</td>
+              <td>
+                <Local local={__doc____} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+      <div className="text-center my-2">
+        <Button disabled={page === 1} onClick={() => setPage(___page___ - 1)}>
+          Prev
+        </Button>
+        <span className="mx-2">
+          {page} / {__last____}
+        </span>
+        <Button disabled={page === last} onClick={() => setPage(page + ___1___)}>
+          Next
+        </Button>
+
+      </div>
+    </div>
+  );
+};
+
+export __default____ Locals;
+
+
+/*
+	1. useEffect
+	2. axios
+	3. InputGroup
+	4. Local
+	5. setDocuments
+	6. setQuery
+	7. 1
+	8. setSize
+	9. async
+	10. https://dapi.kakao.com/v2/local/search/keyword.json
+	11. query
+	12. get
+	13. documents
+	14. pageable_count
+	15. callAPI
+	16. e
+	17. preventDefault
+	18. setPage
+	19. parseInt**
+	20. onSubmit
+	21. size
+	22. onChangeSize**
+	23. setQuery
+	24. query**
+	25. map
+	26. doc.id
+	27. place_name
+	28. doc**
+	29. page
+	30. last
+	31. 1
+	32. default
+*/

@@ -1,0 +1,102 @@
+import { ______, useState } from "react";
+import { Button, Table } from "react-bootstrap";
+import { ______ } from "react-router-dom";
+
+const Posts = () => {
+  const [posts, ______] = useState([]);
+  const [loading, setLoading] = useState(______);
+  const [page, setPage] = useState(1);
+  const [last, ______] = useState(1);
+  const [displayPosts, setDisplayPosts] = useState([]);
+
+  function callAPI() {
+    setLoading(______);
+    fetch("______")
+      .then((response) => response.______())
+      .then((json) => {
+        setLoading(false);
+        setPosts(json);
+        setLast(Math.______(json.length / 10));
+        updateDisplayPosts(json, page);
+      });
+  }
+
+  const updateDisplayPosts = (allPosts, currentPage) => {
+    const start = (currentPage - 1) * ______;
+    const end = start + 10;
+    setDisplayPosts(allPosts.______(start, end));
+  };
+
+  useEffect(() => {
+    ______();
+  }, []);
+
+  useEffect(() => {
+    if (posts.length > 0) {
+      updateDisplayPosts(______, page);
+    }
+  }, [page, posts]);
+
+  if (______) {
+    return <h1 className="text-center">Loading Posts...</h1>;
+  }
+  return (
+    <div className="componentWrap">
+      <h1>Posts Component</h1>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          {displayPosts.______(p => (
+            <tr key={______}>
+              <td>{p.id}</td>
+              <td>
+                <Link to={`/posts/${p.______}`}>{p.title}</Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+      <div className="d-flex justify-content-center gap-3">
+        <Button disabled={page === ______} onClick={() => setPage(page - 1)}>
+          이전
+        </Button>
+        <span>
+          {page} / {______}
+        </span>
+        <Button disabled={page === last} onClick={() => ______(page + 1)}>
+          다음
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default Posts;
+
+/*
+	1. useEffect
+	2. Link
+	3. setPosts
+	4. false
+	5. setLast
+	6. true
+	7. https://jsonplaceholder.typicode.com/posts
+	8. json**
+	9. ceil
+	10. 10**
+	11. slice**
+	12. callAPI
+	13. posts**
+	14. loading
+	15. map
+	16. p.id
+	17. id
+	18. 1
+	19. last
+	20. setPage
+*/

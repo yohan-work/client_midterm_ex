@@ -1,0 +1,84 @@
+import { ______, useRef } from "react";
+import { div } from "three/tsl";
+
+const Fruits = () => {
+  const [name, ______] = useState("");
+  const next_id = useRef(______);
+  const onClickRegister = () => {
+    const data = Fruits.______(
+      { id: next_id.______, name: name }
+    );
+    ______(data);
+    next_id.current++;
+    setName("");
+  };
+  const onKeyDownName = (______) => {
+    if (e.key === "______") {
+      onClickRegister();
+    }
+  };
+
+  const [Fruits, setFruits] = useState([
+    { id: 1, name: "apple" },
+    { id: 2, name: "apple mango" },
+    { id: 3, name: "banana" },
+  ]);
+  const onClickDelete = (______) => {
+    if (window.______((`Delete this: ${id}?`))) {
+      const data = Fruits.______(f => f.id != id);
+      setFruits(______);
+    }
+  };
+  return (
+    <div className="componentWrap">
+      <h1>Fruits Component</h1>
+      <div style={{ marginBottom: "10px" }}>
+        <input
+          type="text"
+          placeholder="Enter a fruit"
+          value={______}
+          ______={(e) => setName(e.target.value)}
+          onKeyDown={______}
+        />
+        <button onClick={______}>Add</button>
+      </div>
+      {Fruits.______(f => (
+        <div key={______}>
+          <span style={{ fontSize: "15px" }}>{f.id} :</span>
+          <span style={{ marginLeft: "5px" }}>{f.name}</span>
+          <button
+            style={{ marginLeft: "10px", background: "none" }}
+            onClick={() => ______(f.id)}
+          >
+            Delete
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Fruits;
+
+
+/*
+	useState
+	setName
+	4
+	concat
+	current
+	setFruits
+	e
+	Enter
+	id**
+	confirm
+	filter
+	data
+	name**
+	onChange
+	onKeyDownName
+	onClickRegister
+	map
+	f.id
+	onClickDelete
+*/

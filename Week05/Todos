@@ -1,0 +1,90 @@
+import { ______, useState } from "react";
+import { Button, Table } from "react-bootstrap";
+import Todo from "./______";
+
+const Todos = () => {
+  const [last, ______] = useState(1);
+  const [loading, setLoading] = useState(______);
+  const [todos, setTodos] = useState([]);
+  const [page, ______] = useState(1);
+
+  const callAPI = () => {
+    ______(true);
+    fetch("______")
+      .then((response) => response.______())
+      .then((json) => {
+        const start = (______ - 1) * 10 + 1;
+        const end = page * 10;
+        const data = json.______(j => j.id >= start && j.id <= end);
+        ______(data);
+        setLast(Math.ceil(json.______ / 10));
+        console.log(data);
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    ______();
+  }, [______]);
+
+  if (loading) {
+    return <h1 className="my-5 text-center">______...</h1>;
+  }
+
+  return (
+    <div className="componentWrap">
+      <h1>Todos Component</h1>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th></th>
+            <th>ID</th>
+            <th>Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          {todos.______(t => (
+            <Todo todo={t} key={______} />
+          ))}
+        </tbody>
+      </Table>
+      <div className="d-flex justify-content-center gap-3">
+        <Button disabled={page === ______} onClick={() => setPage(page - 1)}>
+          이전
+        </Button>
+        <span>
+          {page} / {______}
+        </span>
+        <Button disabled={page === last} onClick={() => ______(page + 1)}>
+          다음
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default Todos;
+
+
+/*
+	1. useEffect
+	2. Todo
+	3. setLast
+	4. false
+	5. setPage
+	6. setLoading
+	7. https://jsonplaceholder.typicode.com/todos
+	8. json
+	9. page
+	10. filter**
+	11. setTodos
+	12. length**
+	13. callAPI
+	14. page
+	15. Loading
+	16. map
+	17. t.id**
+	18. 1
+	19. last
+	20. setPage
+*/

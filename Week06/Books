@@ -1,0 +1,175 @@
+import ______ from "axios";
+import { useState, useRef, ______ } from "react";
+import {
+  Button,
+  Table,
+  Row,
+  Col,
+  Form,
+  ______,
+  FormSelect,
+} from "react-bootstrap";
+import Book from "./______";
+
+const Books = () => {
+  const [books, ______] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [query, ______] = useState("react");
+  const [page, setPage] = useState(1);
+  const [last, setLast] = useState(1);
+  const [size, ______] = useState(10);
+
+  const callAPI = ______ () => {
+    const url = "https://dapi.kakao.com/v3/search/book?target=title";
+    const config = {
+      headers: {
+        Authorization: "KakaoAK 47d18512e80079439c076a3605f727e4",
+      },
+      params: {
+        query: ______,
+        page: page,
+        size: size,
+      },
+    };
+    ______(true);
+    const res = await axios.______(url, config);
+    console.log(res.data);
+    setBooks(res.data.______);
+    setLast(Math.ceil(res.data.meta.______ / size));
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    ______();
+  }, [page, size]);
+
+  const onSubmit = (______) => {
+    e.______();
+    if (query === "") {
+      ______("input query");
+      return;
+    } else {
+      setPage(1);
+      callAPI();
+    }
+  };
+
+  const onChangeSize = (e) => {
+    ______(1);
+    setSize(e.target.______);
+  };
+  if (______) {
+    return <h1 className="text-center my-3">Loading..</h1>;
+  }
+  return (
+    <div className="componentWrap">
+      <h1 className="my-3">Books Component</h1>
+      <Row>
+        <Col className="d-flex justify-content-end my-3 me-2">
+          <Form ______={onSubmit}>
+            <InputGroup>
+              <Form.Control
+                type="text"
+                value={query}
+                onChange={(e) => ______(e.target.value)}
+                placeholder="Search"
+              />
+              <Form.Select
+                value={size}
+                className="form-select"
+                onChange={______}
+              >
+                <option value={5}>5행</option>
+                <option value={10}>10행</option>
+                <option value={20}>20행</option>
+              </Form.Select>
+              <Button type="submit">Search</Button>
+            </InputGroup>
+          </Form>
+        </Col>
+      </Row>
+      <Table striped bordered hover>
+        <colgroup>
+          <col width="10%" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          {books.______(book => {
+            return (
+              <tr key={book.______}>
+                <td>
+                  <img
+                    src={book.thumbnail || "https://placehold.co/100x150"}
+                    width="100"
+                  />
+                </td>
+                <td>{book.______}</td>
+                <td>{book.authors}</td>
+                <td>{book.price}</td>
+                <td>
+                  <Book book={______} />
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
+      <div className="text-center my-3">
+        <Button disabled={page === 1} onClick={() => setPage(page - ______)}>
+          Prev
+        </Button>
+        <span className="mx-3">
+          {page} / {______}
+        </span>
+        <Button disabled={page === last} onClick={() => setPage(______ + 1)}>
+          Next
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export ______ Books;
+
+
+/*
+	1. axios
+	2. useEffect
+	3. InputGroup
+	4. Book
+	5. setBooks
+	6. setQuery
+	7. setSize
+	8. async **
+	9. query
+	10. setLoading
+	11. get**
+	12. documents**
+	13. pageable_count**
+	14. callAPI
+	15. e
+	16. preventDefault
+	17. alert
+	18. setPage
+	19. value
+	20. loading
+	21. onSubmit
+	22. setQuery**
+	23. onChangeSize
+	24. map
+	25. isbn
+	26. title
+	27. book
+	28. 1
+	29. last
+	30. page
+	31. default
+*/

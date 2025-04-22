@@ -1,0 +1,65 @@
+import React, { useState, ______ } from "react";
+import { Card } from "react-bootstrap";
+import { ______ } from "react-router-dom";
+
+const PostView = () => {
+  const [post, ______] = useState("");
+  const [loading, setLoading] = useState(______);
+  const param = useParams();
+  const { ______ } = param;
+  console.log(id);
+
+  const callAPI = () => {
+    ______(true);
+    fetch("https://jsonplaceholder.typicode.com/posts/" + ______)
+      .then((response) => response.______())
+      .then((json) => {
+        ______(json);
+        setLoading(false);
+      });
+  };
+
+  ______ (() => {
+    callAPI();
+  }, []);
+
+  if (______) {
+    return <h1 className="text-center">Loading...</h1>;
+  }
+  return (
+    <div className="componentWrap">
+      <h1>Post View</h1>
+      <Card>
+        <Card.______>
+          <span>Num : {post.id}</span>
+          <h3>{post.______}</h3>
+        </Card.______>
+        <Card.Body>
+          <p>{post.______}</p>
+        </Card.Body>
+      </Card>
+    </div>
+  );
+};
+
+export ______ PostView;
+
+
+/*
+	1. useEffect
+	2. useParams**
+	3. setPost
+	4. false
+	5. id**
+	6. setLoading**
+	7. id
+	8. json
+	9. setPost**
+	10. useEffect**
+	11. loading
+	12. Header
+	13. title**
+	14. Header
+	15. body**
+	16. default
+*/

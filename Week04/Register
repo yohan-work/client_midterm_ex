@@ -1,0 +1,118 @@
+import { useState, ______ } from "react";
+import { Card, Button, Form } from "react-bootstrap";
+
+const Register = ({ ______ }) => {
+  const next_id = useRef(______);
+  const ref_name = useRef("");
+
+  const [form, ______] = useState({
+    id: next_id.current,
+    name: "",
+    address: "",
+    phone: "",
+  });
+
+  const { id, ______, address, phone } = form;
+
+  const onChange = (______) => {
+    setForm({
+      ...______,
+      [e.target.name]: e.target.______,
+    });
+  };
+
+  const onClickRegister = () => {
+    ______(form);
+    next_id.______++;
+    setForm({
+      id: next_id.current,
+      name: "",
+      address: "",
+      phone: "",
+    });
+    ref_name.______.focus();
+  };
+
+  const onKeyDownPhone = (e) => {
+    if (e.______ === "Enter") {
+      onClickRegister();
+    }
+  };
+
+  return (
+    <div className="">
+      <Card>
+        <Card.Header>
+          Register Address<b>(component)</b>
+        </Card.Header>
+        <Card.Body>
+          <Form>
+            <Form.Control
+              onChange={______}
+              name="name"
+              value={______}
+              className="mb-2"
+              type="text"
+              placeholder="Name"
+              ref={______}
+            />
+            <Form.Control
+              onChange={onChange}
+              name="______"
+              value={address}
+              className="mb-2"
+              type="text"
+              placeholder="Address"
+            />
+            <Form.Control
+              onChange={onChange}
+              name="phone"
+              value={______}
+              className="mb-2"
+              type="text"
+              placeholder="Phone"
+              ______={onKeyDownPhone}
+            />
+            <div>
+              <Button
+                className="w-50"
+                variant="primary"
+                onClick={______}
+              >
+                Register
+              </Button>
+              <Button className="w-50" variant="secondary">
+                Cancel
+              </Button>
+            </div>
+          </Form>
+        </Card.Body>
+      </Card>
+    </div>
+  );
+};
+
+export default Register;
+
+
+/*
+	1. useRef
+	2. onRegister **
+	3. 4
+	4. setForm
+	5. name
+	6. e
+	7. form
+	8. value
+	9. onRegister **
+	10. current
+	11. current
+	12. key
+	13. onChange
+	14. name
+	15. ref_name
+	16. address
+	17. phone
+	18. onKeyDown**
+	19. onClickRegister
+*/
